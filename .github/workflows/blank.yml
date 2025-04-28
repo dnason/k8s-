@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:${{ github.event.release.tag_name }}
+          tags: ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:${{ steps.get_version.outputs.VERSION }}
           latest: ${{ github.event_name != 'pull_request' }} 
 
       - name: Image Digest
