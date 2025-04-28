@@ -13,9 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         
-      - name: Read Version from File
+      - name: Read version
         id: version
-        run: echo "version=$(cat VERSION)" >> $GITHUB_OUTPUT
+        run: |
+          VERSION=$(cat VERSION | tr -d '[:space:]')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
           
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
