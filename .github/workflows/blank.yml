@@ -24,10 +24,9 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and Push Docker Image
-        id: build-push
         uses: docker/build-push-action@v5
         with:
-          push: ${{ github.event_name != 'pull_request' }} 
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:${{ github.event.release.tag_name }}
           latest: ${{ github.event_name != 'pull_request' }} 
 
