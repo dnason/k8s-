@@ -33,4 +33,4 @@ jobs:
 
       - name: Image Digest
         if: steps.build-push.outputs.digest
-        run: echo "Digest: ${{ steps.build-push.outputs.digest }}"
+        run: echo "Digest ${{ steps.build-push.outputs.digest }}"
