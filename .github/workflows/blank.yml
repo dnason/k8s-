@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.get_version.outputs.version }}
+          tags: ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_USERNAME }}/k8s:1.0.0
           latest: ${{ github.event_name != 'pull_request' }} 
 
       - name: Image Digest
