@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appgo
+  labels:
+    app: appgo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appgo
+  template:
+    metadata:
+      labels:
+        app: appgo
+    spec:
+      containers:
+      - name: appgo
+        image: docker.io/dnason777/appgo:latest
+        ports:
+        - containerPort: 8080
